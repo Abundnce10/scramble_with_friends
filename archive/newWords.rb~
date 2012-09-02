@@ -1,0 +1,25 @@
+#!/usr/bin/ruby
+require 'open-uri'
+
+text = File.open("words.txt", "r")
+puts text.class
+
+newWords = "" 
+
+# Start array
+newWords << "words = [\n"
+
+text.each { |word|
+	newWords << "'"
+	newWords << word.gsub("'","").gsub("\n","").downcase
+	newWords << "',\n"
+}
+
+
+# End array
+newWords << "\n]"
+
+newFile = File.open("wordsNew.txt", "w")
+newFile.write(newWords)
+
+
