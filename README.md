@@ -8,5 +8,6 @@
 
 
 # Note
-* This iteration doesn't take into account the layout of the tiles on the grid
+* I need to find a better dictionary that includes more words
+* I need to incorporate DW, TW, DL, and TL scores for individual tiles
 
