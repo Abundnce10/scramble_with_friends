@@ -1,0 +1,55 @@
+def is_word_on_board(word, board, prefix="", cell=-1)
+	if DEBUG
+		puts "word = #{word}"
+		puts "board = #{bjoard}"
+		puts "prefix = #{prefix}"
+		puts "cell = #{cell}"
+	end
+
+	# If we're just beginning, start word at any cell the starting letter of the word
+	if prefix.length == 0
+		0.upto(15) do |i|
+			if word[0] == board[i]
+				board_copy = board.dup
+				newprefix = board[i,1]
+
+				# put "*" in place of letter so we don't reuse it
+				board_copy[i] = ?*
+
+				# recurse, and return true if the word is found
+				if is_word_on_board(word, board_copy, newprefix, i)
+					return true
+				end
+			end
+		end
+
+		# we got here without finding a match, so return false
+		return false
+
+	elsif prefix.length == word.length
+		# we have the whole word!
+		return true
+
+	else
+		# search adjacent cells for the next letter in the word
+		ADJACENT[cell].each do |c|
+			# if the letter in this adjacent cell matches the 
+			# next letter of the word, add it to the prefix and recurse
+			if board[c] == word[prefix.length]
+				newprefix = prefix + board[c,1]
+				board_copy = board.dup
+
+				# put "*" in place of letter so we don't reuse it
+				board_copy[c] = ?*
+
+				# recurse, and return true if the word is found
+				if is_word_on_board(word, board_copy, newprefix, c)
+					return true
+				end
+			end
+		end
+
+		# bummer, no word found, so return false
+		return false
+	end
+end

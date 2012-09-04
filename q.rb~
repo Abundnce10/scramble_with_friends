@@ -1,0 +1,24 @@
+def combineQAndU(letters)
+	# grab index of "Q"
+	q_index = letters.index("q")
+
+	# create array with letters
+	arr = letters.split('')
+	arr[q_index] = "qu"
+	arr.delete_at(q_index + 1)
+	
+	#return array
+	return arr
+end
+
+def addUToQ(letters)
+	# grab index of "Q"
+	q_index = letters.index("q")
+
+	# create array with letters
+	arr = letters.split('')
+	arr[q_index] = "qu"
+	
+	#return array
+	return arr
+end
