@@ -9,6 +9,9 @@ word = gets.chomp.downcase
 
 arr = word.split('')
 
+puts Time.now
+start = Time.now
+
 # store words that can be spelled with user's letters
 success = []
 
@@ -31,15 +34,14 @@ WORDS.each do |w|
 				break
 			end
 		end
+
 		# store word in array
 		if test 
 			success << w
 			test = false
 		end
-
 	end
 		
-
 end
 
 # create hash for successful words and their corresponding values
@@ -58,4 +60,6 @@ SUCCESS.each {|k,v| puts "#{k}:  #{v}"}
 
 
 puts "The End"
+
+puts Time.now - start
 
